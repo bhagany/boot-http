@@ -28,3 +28,13 @@
    :dependencies (concat (get-env :dev-dependencies) serve-deps)
    :resource-paths #{"test-extra/resources"})
   (test :namespaces #{'pandeiro.boot-http-tests}))
+
+(deftask dev
+  "Dev process"
+  []
+  (comp
+    (watch)
+    (repl :server true)
+    (pom)
+    (jar)
+    (install)))
